@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+<head>
+    <title>League Of Counter</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+<!--
+  * The "meta viewport" tag (below) helps your app size appropriately to a device's ideal viewport.
+  * Note that Windows device viewports work better when initialized using the @viewport CSS rule.
+  * For a quick overview of "meta viewport" and @viewport, see this article:
+  *   http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+  * To see how it works, try your app on a real device with and without a "meta viewport" tag.
+  * Additional useful references include:
+  *   http://www.quirksmode.org/mobile/viewports.html
+  *   http://www.quirksmode.org/mobile/metaviewport/devices.html
+  *   https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+-->
+
+    <!-- <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+    <style>
+    /* following three (cascaded) are equivalent to above three meta viewport statements */
+    /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+    /* see http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport { width: 100vw ; min-zoom: 100% ; zoom: 100% ; }          @viewport { width: 100vw ; min-zoom: 100% zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; min-zoom: 100% ; }                   @viewport { user-zoom: fixed ; min-zoom: 100% ; }
+        /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+    </style>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+
+    <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+    <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
+    <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+    <!-- Recommended location for your JavaScript libraries -->
+    <!-- These library references (below) are just examples to give you the general idea... -->
+    <!-- <script src="lib/mc/hammer.js"></script> -->
+    <!-- <script src="lib/ft/fastclick.js"></script> -->
+
+<!--
+  * cordova.js is a phantom lib for "Cordova HTML5 web app," it does nothing in a "Standard HTML5 web app"
+  * Seeing a "Failed to load resource: net::ERR_FILE_NOT_FOUND" message caused by this "cordova.js" script?
+  * The cordova.js script is required if you convert your "Standard HTML5" project into a "Cordova" project.
+  * You can safely ignore the error or comment out this line if you will not be developing a Cordova app.
+-->
+    <script src="cordova.js" id="xdkJScordova_"></script>
+    <script type="text/javascript" src="js/jquery-1.9.js"></script>
+
+    <script src="js/confsource.js"></script>
+    <script src="js/init-app.js"></script>
+    <script src="xdk/init-dev.js"></script>
+
+    <script src="js/admob.js"></script>
+    <script src="js/banner.js"></script>
+
+    <script type="text/javascript"> //Script para Fechar o Aplicativo
+      function closeApp(){
+        navigator.app.exitApp();
+      }
+    </script>
+</head>
+
+
+<body>
+    <div id="logo">
+      <img src="images/loc.png" alt="logo"/>
+    </div>
+
+    <div class="divsearch">
+      <form class="form-search">
+        <input class="input-large search-query" type="text" placeholder="search" id="search" style=" display: block; margin-left: auto; margin-right: auto; height: 35px">
+      </form>
+    </div>
+
+    <div class="all-champs" id="all-champions">
+            <div class="foto-legenda" id="divAatrox" >
+                <img src="images/champions/Aatrox.png" id="Aatrox" />
+                <span>Aatrox</span>
+            </div>
+            <div class="foto-legenda" id="divAhri">
+                <img src="images/champions/Ahri.png" id="Ahri"/>
+                <span>Ahri</span>
+            </div>
+            <div class="foto-legenda" id="divAkali">
+                <img src="images/champions/Akali.png" id="Akali"/>
+                <span>Akali</span>
+            </div>
+            <div class="foto-legenda" id="divAlistar">
+                <img src="images/champions/Alistar.png" id="Alistar"/>
+                <span>Alistar</span>
+            </div>
+            <div class="foto-legenda" id="divAmumu">
+                <img src="images/champions/Amumu.png" id="Amumu"/>
+                <span>Amumu</span>
+            </div>
+            <div class="foto-legenda" id="divAnivia">
+                <img src="images/champions/Anivia.png" id="Anivia"/>
+                <span>Anivia</span>
+            </div>
+            <div class="foto-legenda" id="divAnnie">
+                <img src="images/champions/Annie.png" id="Annie"/>
+                <span>Annie</span>
+            </div>
+            <div class="foto-legenda" id="divAshe">
+                <img src="images/champions/Ashe.png" id="Ashe"/>
+                <span>Ashe</span>
+            </div>
+            <div class="foto-legenda" id="divAurelionSol">
+                <img src="images/champions/AurelionSol.png" id="AurelionSol"/>
+                <span>Aurelion Sol</span>
+            </div>
+            <div class="foto-legenda" id="divAzir">
+                <img src="images/champions/Azir.png" id="Azir"/>
+                <span>Azir</span>
+            </div>
+            <div class="foto-legenda" id="divBard">
+                <img src="images/champions/Bard.png" id="Bard"/>
+                <span>Bard</span>
+            </div>
+            <div class="foto-legenda" id="divBlitzcrank">
+                <img src="images/champions/Blitzcrank.png" id="Blitzcrank"/>
+                <span>Blitzcrank</span>
+            </div>
+           <div class="foto-legenda" id="divBrand">
+               <img src="images/champions/Brand.png" id="Brand"/>
+                <span>Brand</span>
+            </div>
+            <div class="foto-legenda" id="divBraum">
+              <img src="images/champions/Braum.png" id="Braum"/>
+              <span>Braum</span>
+            </div>
+            <div class="foto-legenda" id="divCaitlyn">
+              <img src="images/champions/Caitlyn.png" id="Caitlyn"/>
+              <span>Caitlyn</span>
+            </div>
+            <div class="foto-legenda" id="divCassiopeia">
+              <img src="images/champions/Cassiopeia.png" id="Cassiopeia"/>
+              <span>Cassiopeia</span>
+            </div>
+            <div class="foto-legenda" id="divChoGath">
+              <img src="images/champions/Chogath.png" id="ChoGath"/>
+              <span>Cho'Gath</span>
+            </div>
+            <div class="foto-legenda" id="divCorki">
+              <img src="images/champions/Corki.png" id="Corki"/>
+              <span>Corki</span>
+            </div>
+            <div class="foto-legenda" id="divDarius">
+              <img src="images/champions/Darius.png" id="Darius"/>
+              <span>Darius</span>
+            </div>
+            <div class="foto-legenda" id="divDiana">
+              <img src="images/champions/Diana.png" id="Diana"/>
+              <span>Diana</span>
+            </div>
+            <div class="foto-legenda" id="divDraven">
+              <img src="images/champions/Draven.png" id="Draven"/>
+              <span>Draven</span>
+            </div>
+            <div class="foto-legenda" id="divDrMundo">
+              <img src="images/champions/DrMundo.png" id="DrMundo"/>
+              <span>Dr. Mundo</span>
+            </div>
+            <div class="foto-legenda" id="divEkko">
+              <img src="images/champions/Ekko.png" id="Ekko"/>
+              <span>Ekko</span>
+            </div>
+            <div class="foto-legenda" id="divElise">
+              <img src="images/champions/Elise.png" id="Elise"/>
+              <span>Elise</span>
+            </div>
+            <div class="foto-legenda" id="divEvelynn">
+              <img src="images/champions/Evelynn.png" id="Evelynn"/>
+              <span>Evelynn</span>
+            </div>
+            <div class="foto-legenda" id="divEzreal">
+              <img src="images/champions/Ezreal.png" id="Ezreal"/>
+              <span>Ezreal</span>
+            </div>
+            <div class="foto-legenda" id="divFiddlesticks">
+              <img src="images/champions/Fiddlesticks.png" id="Fiddlesticks"/>
+              <span>Fiddlesticks</span>
+            </div>
+            <div class="foto-legenda" id="divFiora">
+              <img src="images/champions/Fiora.png" id="Fiora"/>
+              <span>Fiora</span>
+            </div>
+            <div class="foto-legenda" id="divFizz">
+              <img src="images/champions/Fizz.png" id="Fizz"/>
+              <span>Fizz</span>
+            </div>
+            <div class="foto-legenda" id="divGalio">
+              <img src="images/champions/Galio.png" id="Galio"/>
+              <span>Galio</span>
+            </div>
+            <div class="foto-legenda" id="divGangplank">
+              <img src="images/champions/Gangplank.png" id="Gangplank"/>
+              <span>Gangplank</span>
+            </div>
+            <div class="foto-legenda" id="divGaren">
+              <img src="images/champions/Garen.png" id="Garen"/>
+              <span>Garen</span>
+            </div>
+            <div class="foto-legenda" id="divGnar">
+              <img src="images/champions/Gnar.png" id="Gnar"/>
+              <span>Gnar</span>
+            </div>
+            <div class="foto-legenda" id="divGragas">
+              <img src="images/champions/Gragas.png" id="Gragas"/>
+              <span>Gragas</span>
+            </div>
+            <div class="foto-legenda" id="divGraves">
+              <img src="images/champions/Graves.png" id="Graves"/>
+              <span>Graves</span>
+            </div>
+            <div class="foto-legenda" id="divHecarim">
+              <img src="images/champions/Hecarim.png" id="Hecarim"/>
+              <span>Hecarim</span>
+            </div>
+            <div class="foto-legenda" id="divHeimerdinger">
+              <img src="images/champions/Heimerdinger.png" id="Heimerdinger"/>
+              <span>Heimerdinger</span>
+            </div>
+            <div class="foto-legenda" id="divIllaoi">
+              <img src="images/champions/Illaoi.png" id="Illaoi"/>
+              <span>Illaoi</span>
+            </div>
+            <div class="foto-legenda" id="divIrelia">
+              <img src="images/champions/Irelia.png" id="Irelia"/>
+              <span>Irelia</span>
+            </div>
+            <div class="foto-legenda" id="divJanna">
+              <img src="images/champions/Janna.png" id="Janna"/>
+              <span>Janna</span>
+            </div>
+            <div class="foto-legenda" id="divJarvanIV">
+              <img src="images/champions/JarvanIV.png" id="JarvanIV"/>
+              <span>Jarvan IV</span>
+            </div>
+            <div class="foto-legenda" id="divJax">
+              <img src="images/champions/Jax.png" id="Jax"/>
+              <span>Jax</span>
+            </div>
+            <div class="foto-legenda" id="divJayce">
+              <img src="images/champions/Jayce.png" id="Jayce"/>
+              <span>Jayce</span>
+            </div>
+            <div class="foto-legenda" id="divJhin">
+              <img src="images/champions/Jhin.png" id="Jhin"/>
+              <span>Jhin</span>
+            </div>
+            <div class="foto-legenda" id="divJinx">
+              <img src="images/champions/Jinx.png" id="Jinx"/>
+              <span>Jinx</span>
+            </div>
+            <div class="foto-legenda" id="divKalista">
+              <img src="images/champions/Kalista.png" id="Kalista"/>
+              <span>Kalista</span>
+            </div>
+            <div class="foto-legenda" id="divKarma">
+              <img src="images/champions/Karma.png" id="Karma"/>
+              <span>Karma</span>
+            </div>
+            <div class="foto-legenda" id="divKarthus">
+              <img src="images/champions/Karthus.png" id="Karthus"/>
+              <span>Karthus</span>
+            </div>
+            <div class="foto-legenda" id="divKassadin">
+              <img src="images/champions/Kassadin.png" id="Kassadin"/>
+              <span>Kassadin</span>
+            </div>
+            <div class="foto-legenda" id="divKatarina">
+              <img src="images/champions/Katarina.png" id="Katarina"/>
+              <span>Katarina</span>
+            </div>
+            <div class="foto-legenda" id="divKayle">
+              <img src="images/champions/Kayle.png" id="Kayle"/>
+              <span>Kayle</span>
+            </div>
+            <div class="foto-legenda" id="divKennen">
+              <img src="images/champions/Kennen.png" id="Kennen"/>
+              <span>Kennen</span>
+            </div>
+            <div class="foto-legenda" id="divKhaZix">
+              <img src="images/champions/Khazix.png" id="KhaZix"/>
+              <span>Kha'Zix</span>
+            </div>
+            <div class="foto-legenda" id="divKindred">
+              <img src="images/champions/Kindred.png" id="Kindred"/>
+              <span>Kindred</span>
+            </div>
+            <div class="foto-legenda" id="divKogMaw">
+              <img src="images/champions/KogMaw.png" id="KogMaw"/>
+              <span>Kog'Maw</span>
+            </div>
+            <div class="foto-legenda" id="divLeblanc">
+              <img src="images/champions/Leblanc.png" id="Leblanc"/>
+              <span>Leblanc</span>
+            </div>
+            <div class="foto-legenda" id="divLeeSin">
+              <img src="images/champions/LeeSin.png" id="LeeSin"/>
+              <span>Lee Sin</span>
+            </div>
+            <div class="foto-legenda" id="divLeona">
+              <img src="images/champions/Leona.png" id="Leona"/>
+              <span>Leona</span>
+            </div>
+            <div class="foto-legenda" id="divLissandra">
+              <img src="images/champions/Lissandra.png" id="Lissandra"/>
+              <span>Lissandra</span>
+            </div>
+            <div class="foto-legenda" id="divLucian">
+              <img src="images/champions/Lucian.png" id="Lucian"/>
+              <span>Lucian</span>
+            </div>
+            <div class="foto-legenda" id="divLulu">
+              <img src="images/champions/Lulu.png" id="Lulu"/>
+              <span>Lulu</span>
+            </div>
+            <div class="foto-legenda" id="divLux">
+              <img src="images/champions/Lux.png" id="Lux"/>
+              <span>Lux</span>
+            </div>
+            <div class="foto-legenda" id="divMalphite">
+              <img src="images/champions/Malphite.png" id="Malphite"/>
+              <span>Malphite</span>
+            </div>
+            <div class="foto-legenda" id="divMalzahar">
+              <img src="images/champions/Malzahar.png" id="Malzahar"/>
+              <span>Malzahar</span>
+            </div>
+            <div class="foto-legenda" id="divMaokai">
+              <img src="images/champions/Maokai.png" id="Maokai"/>
+              <span>Maokai</span>
+            </div>
+            <div class="foto-legenda" id="divMasterYi">
+              <img src="images/champions/MasterYi.png" id="MasterYi"/>
+              <span>Master Yi</span>
+            </div>
+            <div class="foto-legenda" id="divMissFortune">
+              <img src="images/champions/MissFortune.png" id="MissFortune"/>
+              <span>Miss Fortune</span>
+            </div>
+            <div class="foto-legenda" id="divMordekaiser">
+              <img src="images/champions/Mordekaiser.png" id="Mordekaiser"/>
+              <span>Mordekaiser</span>
+            </div>
+            <div class="foto-legenda" id="divMorgana">
+              <img src="images/champions/Morgana.png" id="Morgana"/>
+              <span>Morgana</span>
+            </div>
+            <div class="foto-legenda" id="divNami">
+              <img src="images/champions/Nami.png" id="Nami"/>
+              <span>Nami</span>
+            </div>
+            <div class="foto-legenda" id="divNasus">
+              <img src="images/champions/Nasus.png" id="Nasus"/>
+              <span>Nasus</span>
+            </div>
+            <div class="foto-legenda" id="divNautilus">
+              <img src="images/champions/Nautilus.png" id="Nautilus"/>
+              <span>Nautilus</span>
+            </div>
+            <div class="foto-legenda" id="divNidalee">
+              <img src="images/champions/Nidalee.png" id="Nidalee"/>
+              <span>Nidalee</span>
+            </div>
+            <div class="foto-legenda" id="divNocturne">
+              <img src="images/champions/Nocturne.png" id="Nocturne"/>
+              <span>Nocturne</span>
+            </div>
+            <div class="foto-legenda" id="divNunu">
+              <img src="images/champions/Nunu.png" id="Nunu"/>
+              <span>Nunu</span>
+            </div>
+            <div class="foto-legenda" id="divOlaf">
+              <img src="images/champions/Olaf.png" id="Olaf"/>
+              <span>Olaf</span>
+            </div>
+            <div class="foto-legenda" id="divOrianna">
+              <img src="images/champions/Orianna.png" id="Orianna"/>
+              <span>Orianna</span>
+            </div>
+            <div class="foto-legenda" id="divPantheon">
+              <img src="images/champions/Pantheon.png" id="Pantheon"/>
+              <span>Pantheon</span>
+            </div>
+            <div class="foto-legenda" id="divPoppy">
+              <img src="images/champions/Poppy.png" id="Poppy"/>
+              <span>Poppy</span>
+            </div>
+            <div class="foto-legenda" id="divQuinn">
+              <img src="images/champions/Quinn.png" id="Quinn"/>
+              <span>Quinn</span>
+            </div>
+            <div class="foto-legenda" id="divRammus">
+              <img src="images/champions/Rammus.png" id="Rammus"/>
+              <span>Rammus</span>
+            </div>
+            <div class="foto-legenda" id="divRekSai">
+              <img src="images/champions/RekSai.png" id="RekSai"/>
+              <span>Rek'Sai</span>
+            </div>
+            <div class="foto-legenda" id="divRenekton">
+              <img src="images/champions/Renekton.png" id="Renekton"/>
+              <span>Renekton</span>
+            </div>
+            <div class="foto-legenda" id="divRengar">
+              <img src="images/champions/Rengar.png" id="Rengar"/>
+              <span>Rengar</span>
+            </div>
+            <div class="foto-legenda" id="divRiven">
+              <img src="images/champions/Riven.png" id="Riven"/>
+              <span>Riven</span>
+            </div>
+            <div class="foto-legenda" id="divRumble">
+              <img src="images/champions/Rumble.png" id="Rumble"/>
+              <span>Rumble</span>
+            </div>
+            <div class="foto-legenda" id="divRyze">
+              <img src="images/champions/Ryze.png" id="Ryze"/>
+              <span>Ryze</span>
+            </div>
+            <div class="foto-legenda" id="divSejuani">
+              <img src="images/champions/Sejuani.png" id="Sejuani"/>
+              <span>Sejuani</span>
+            </div>
+            <div class="foto-legenda" id="divShaco">
+              <img src="images/champions/Shaco.png" id="Shaco"/>
+              <span>Shaco</span>
+            </div>
+            <div class="foto-legenda" id="divShen">
+              <img src="images/champions/Shen.png" id="Shen"/>
+              <span>Shen</span>
+            </div>
+            <div class="foto-legenda" id="divShyvana">
+              <img src="images/champions/Shyvana.png" id="Shyvana"/>
+              <span>Shyvana</span>
+            </div>
+            <div class="foto-legenda" id="divSinged">
+              <img src="images/champions/Singed.png" id="Singed"/>
+              <span>Singed</span>
+            </div>
+            <div class="foto-legenda" id="divSion">
+              <img src="images/champions/Sion.png" id="Sion"/>
+              <span>Sion</span>
+            </div>
+            <div class="foto-legenda" id="divSivir">
+              <img src="images/champions/Sivir.png" id="Sivir"/>
+              <span>Sivir</span>
+            </div>
+            <div class="foto-legenda" id="divSkarner">
+              <img src="images/champions/Skarner.png" id="Skarner"/>
+              <span>Skarner</span>
+            </div>
+            <div class="foto-legenda" id="divSona">
+              <img src="images/champions/Sona.png" id="Sona"/>
+              <span>Sona</span>
+            </div>
+            <div class="foto-legenda" id="divSoraka">
+              <img src="images/champions/Soraka.png" id="Soraka"/>
+              <span>Soraka</span>
+            </div>
+            <div class="foto-legenda" id="divSwain">
+              <img src="images/champions/Swain.png" id="Swain"/>
+              <span>Swain</span>
+            </div>
+            <div class="foto-legenda" id="divSyndra">
+              <img src="images/champions/Syndra.png" id="Syndra"/>
+              <span>Syndra</span>
+            </div>
+            <div class="foto-legenda" id="divTahmKench">
+              <img src="images/champions/TahmKench.png" id="TahmKench"/>
+              <span>Tahm Kench</span>
+            </div>
+            <div class="foto-legenda" id="divTalon">
+              <img src="images/champions/Talon.png" id="Talon"/>
+              <span>Talon</span>
+            </div>
+            <div class="foto-legenda" id="divTaric">
+              <img src="images/champions/Taric.png" id="Taric"/>
+              <span>Taric</span>
+            </div>
+            <div class="foto-legenda" id="divTeemo">
+              <img src="images/champions/Teemo.png" id="Teemo"/>
+              <span>Teemo</span>
+            </div>
+            <div class="foto-legenda" id="divThresh">
+              <img src="images/champions/Thresh.png" id="Thresh"/>
+              <span>Thresh</span>
+            </div>
+            <div class="foto-legenda" id="divTristana">
+              <img src="images/champions/Tristana.png" id="Tristana"/>
+              <span>Tristana</span>
+            </div>
+            <div class="foto-legenda" id="divTrundle">
+              <img src="images/champions/Trundle.png" id="Trundle"/>
+              <span>Trundle</span>
+            </div>
+            <div class="foto-legenda" id="divTryndamere">
+              <img src="images/champions/Tryndamere.png" id="Tryndamere"/>
+              <span>Tryndamere</span>
+            </div>
+            <div class="foto-legenda" id="divTwistedFate">
+              <img src="images/champions/TwistedFate.png" id="TwistedFate"/>
+              <span>Twisted Fate</span>
+            </div>
+            <div class="foto-legenda" id="divTwitch">
+              <img src="images/champions/Twitch.png" id="Twitch"/>
+              <span>Twitch</span>
+            </div>
+            <div class="foto-legenda" id="divUdyr">
+              <img src="images/champions/Udyr.png" id="Udyr"/>
+              <span>Udyr</span>
+            </div>
+            <div class="foto-legenda" id="divUrgot">
+              <img src="images/champions/Urgot.png" id="Urgot"/>
+              <span>Urgot</span>
+            </div>
+            <div class="foto-legenda" id="divVarus">
+              <img src="images/champions/Varus.png" id="Varus"/>
+              <span>Varus</span>
+            </div>
+            <div class="foto-legenda" id="divVayne">
+              <img src="images/champions/Vayne.png" id="Vayne"/>
+              <span>Vayne</span>
+            </div>
+            <div class="foto-legenda" id="divVeigar">
+              <img src="images/champions/Veigar.png" id="Veigar"/>
+              <span>Veigar</span>
+            </div>
+            <div class="foto-legenda" id="divVelKoz">
+              <img src="images/champions/Velkoz.png" id="VelKoz"/>
+              <span>Vel'Koz</span>
+            </div>
+            <div class="foto-legenda" id="divVi">
+              <img src="images/champions/Vi.png" id="Vi"/>
+              <span>Vi</span>
+            </div>
+            <div class="foto-legenda" id="divViktor">
+              <img src="images/champions/Viktor.png" id="Viktor"/>
+              <span>Viktor</span>
+            </div>
+            <div class="foto-legenda" id="divVladimir">
+              <img src="images/champions/Vladimir.png" id="Vladimir"/>
+              <span>Vladimir</span>
+            </div>
+            <div class="foto-legenda" id="divVolibear">
+              <img src="images/champions/Volibear.png" id="Volibear"/>
+              <span>Volibear</span>
+            </div>
+            <div class="foto-legenda" id="divWarwick">
+              <img src="images/champions/Warwick.png" id="Warwick"/>
+              <span>Warwick</span>
+            </div>
+            <div class="foto-legenda" id="divWukong">
+              <img src="images/champions/WuKong.png" id="WuKong"/>
+              <span>WuKong</span>
+            </div>
+            <div class="foto-legenda" id="divXerath">
+              <img src="images/champions/Xerath.png" id="Xerath"/>
+              <span>Xerath</span>
+            </div>
+            <div class="foto-legenda" id="divXinZhao">
+              <img src="images/champions/XinZhao.png" id="XinZhao"/>
+              <span>Xin Zhao</span>
+            </div>
+            <div class="foto-legenda" id="divYasuo">
+              <img src="images/champions/Yasuo.png" id="Yasuo"/>
+              <span>Yasuo</span>
+            </div>
+            <div class="foto-legenda" id="divYorick">
+              <img src="images/champions/Yorick.png" id="Yorick"/>
+              <span>Yorick</span>
+            </div>
+            <div class="foto-legenda" id="divZac">
+              <img src="images/champions/Zac.png" id="Zac"/>
+              <span>Zac</span>
+            </div>
+            <div class="foto-legenda" id="divZed">
+              <img src="images/champions/Zed.png" id="Zed"/>
+              <span>Zed</span>
+            </div>
+            <div class="foto-legenda" id="divZiggs">
+              <img src="images/champions/Ziggs.png" id="Ziggs"/>
+              <span>Ziggs</span>
+            </div>
+            <div class="foto-legenda" id="divZilean">
+              <img src="images/champions/Zilean.png" id="Zilean"/>
+              <span>Zilean</span>
+            </div>
+            <div class="foto-legenda" id="divZyra">
+              <img src="images/champions/Zyra.png" id="Zyra"/>
+              <span>Zyra</span>
+            </div>
+
+        </div>
+        <div id="btn_close" onclick="closeApp()">
+          <img src="./images/close.png" style="width:48px;height:48px;position:relative;left:45%;padding-bottom:45px" />
+        </div>
+    <!-- IMPORTANT: Do not include a weinre script tag as part of your release builds! -->
+    <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+    <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+</body>
+</html>
