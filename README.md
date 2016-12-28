@@ -12,4 +12,4 @@ http://www.w3schools.com/jquerymobile/tryit.asp?filename=tryjqmob_pages
  Tentar achar um outro Background e ajeitar o background
 
 
- Atualizar o Icone da Irelia
+ Atualizar as imagens e adicionar champions novos.
